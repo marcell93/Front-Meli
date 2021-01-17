@@ -7,8 +7,22 @@ const reactLogo = require("./../assets/img/react_logo.svg");
 import "./../assets/scss/App.scss";
 import ProductItemList from "./ProductItemList";
 
+interface Product {
+  id: string;
+  title: string;
+  thumbnail: string;
+  price: number;
+  address: {
+    state_name: string;
+  }
+}
+interface SearchProducts {
+  categories: string[];
+  items: Product[];
+}
+
 const ProductList: FC = (): ReactElement => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<SearchProducts>();
   const location = useLocation();
 
   useEffect(() => {
@@ -16,8 +30,10 @@ const ProductList: FC = (): ReactElement => {
     const search = params.get('search');
     (async () => {
       try {
-        const res = await fetch('/products/' + search);
-        setProducts(await res.json());
+        const res = await fetch('http://localhost:3100/api/items/?q=' + search);
+        const resJson = await res.json();
+        resJson.items = resJson.items?.slice(0, 4) ?? [];
+        setProducts(resJson);
       } catch (error) {
         toast.error('Error cargando los productos');
       }
@@ -28,7 +44,7 @@ const ProductList: FC = (): ReactElement => {
     <div>
       <p>Product List</p>
       {
-        products.map(p => <ProductItemList id='' image='' price={1} description='desc' place='' />)
+        products?.items.map(p => <ProductItemList key={p.id} id={p.id} image={p.thumbnail} price={p.price} title={p.title} place={p.address?.state_name} />)
       }
     </div>
   )

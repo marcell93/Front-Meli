@@ -1,22 +1,25 @@
 import * as React from "react";
 import { FC, ReactElement } from "react";
-
-const reactLogo = require("./../assets/img/react_logo.svg");
-import "./../assets/scss/App.scss";
+import { useHistory } from 'react-router-dom';
 
 interface ProductItemListProps {
   id: string;
   image: string;
   price: number;
-  description: string;
+  title: string;
   place: string;
 }
 
 const ProductItemList: FC<ProductItemListProps> = (props): ReactElement => {
+  const history = useHistory();
+
+  const goToProductDetail = () => {
+    history.push('/items/' + props.id);
+  }
 
   return (
     <div>
-      <p>Product Item</p>
+      <p onClick={goToProductDetail}>Product Item</p>
     </div>
   )
 };

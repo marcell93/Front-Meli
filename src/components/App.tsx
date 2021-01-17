@@ -27,13 +27,13 @@ const App: FC = (): ReactElement => {
       <BrowserRouter>
         <TopBar />
         <Switch>
+        <Route
+            path='/items/:id'
+            component={ProductDetail}
+          />
           <Route
             path='/items'
             component={ProductList}
-          />
-          <Route
-            path='/items/:id'
-            component={ProductDetail}
           />
           <Route
             path='/'
