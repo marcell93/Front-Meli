@@ -2,9 +2,6 @@ import * as React from "react";
 import { FC, ReactElement, useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
-const reactLogo = require("./../assets/img/react_logo.svg");
-import "./../assets/scss/App.scss";
 import ProductItemList from "./ProductItemList";
 
 interface Product {

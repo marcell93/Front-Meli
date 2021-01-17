@@ -23,11 +23,11 @@ toast.configure({
 
 const App: FC = (): ReactElement => {
   return (
-    <div className='app'>
+    <div>
       <BrowserRouter>
         <TopBar />
         <Switch>
-        <Route
+          <Route
             path='/items/:id'
             component={ProductDetail}
           />
