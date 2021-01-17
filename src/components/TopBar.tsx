@@ -6,11 +6,16 @@ const mlLogo = require('./../assets/img/Logo_ML.png');
 const searchImg = require('./../assets/img/ic_Search.png');
 
 const styles = StyleSheet.create({
-  container: {
+  topBar: {
     backgroundColor: '#FFE600',
     padding: '5px',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '70%',
   },
   searchBtn: {
     width: '30px',
@@ -18,7 +23,7 @@ const styles = StyleSheet.create({
     padding: 0
   },
   searchInput: {
-    width: '60%',
+    width: '100%',
     height: '24px',
     minWidth: '135px',
     marginLeft: '15px'
@@ -38,12 +43,14 @@ const TopBar: FC = (): ReactElement => {
   }
 
   return (
-    <div className={css(styles.container)}>
-      <img src={mlLogo.default} height='30px' />
-      <input type='text' className={css(styles.searchInput)} maxLength={50} placeholder='Nunca dejes de buscar' value={search} onChange={(e) => setSearch(e.target.value)} />
-      <button onClick={onClickSearch} className={css(styles.searchBtn)}>
-        <img src={searchImg.default} />
-      </button>
+    <div className={css(styles.topBar)}>
+      <div className={css(styles.container)}>
+        <img src={mlLogo.default} height='30px' />
+        <input type='text' className={css(styles.searchInput)} maxLength={50} placeholder='Nunca dejes de buscar' value={search} onChange={(e) => setSearch(e.target.value)} />
+        <button onClick={onClickSearch} className={css(styles.searchBtn)}>
+          <img src={searchImg.default} />
+        </button>
+      </div>
     </div>
   )
 };

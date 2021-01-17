@@ -3,6 +3,14 @@ import { FC, ReactElement, useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ProductItemList from "./ProductItemList";
+import { StyleSheet, css } from 'aphrodite';
+
+const styles = StyleSheet.create({
+  productList: {
+    width: '70%',
+    margin: '0 auto'
+  },
+});
 
 interface Product {
   id: string;
@@ -38,8 +46,8 @@ const ProductList: FC = (): ReactElement => {
   }, [location]);
 
   return (
-    <div>
-      <p>Product List</p>
+    <div className={css(styles.productList)}>
+      <p>Electronica, Audio y video > Ipod > Reproducciones</p>
       {
         products?.items.map(p => <ProductItemList key={p.id} id={p.id} image={p.thumbnail} price={p.price} title={p.title} place={p.address?.state_name} />)
       }
