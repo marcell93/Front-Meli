@@ -1,8 +1,8 @@
-import * as React from "react";
-import { FC, ReactElement, useState, useEffect } from "react";
+import * as React from 'react';
+import { FC, ReactElement, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import ProductItemList from "./ProductItemList";
+import ProductItemList from './ProductItemList';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
@@ -19,6 +19,9 @@ interface Product {
   price: number;
   address: {
     state_name: string;
+  };
+  shipping: {
+    free_shipping: boolean;
   }
 }
 interface SearchProducts {
@@ -49,7 +52,13 @@ const ProductList: FC = (): ReactElement => {
     <div className={css(styles.productList)}>
       <p>Electronica, Audio y video > Ipod > Reproducciones</p>
       {
-        products?.items.map(p => <ProductItemList key={p.id} id={p.id} image={p.thumbnail} price={p.price} title={p.title} place={p.address?.state_name} />)
+        products?.items.map(p =>
+          <ProductItemList
+            key={p.id} id={p.id} image={p.thumbnail}
+            price={p.price} title={p.title}
+            place={p.address?.state_name} shipping={p.shipping?.free_shipping}
+          />
+        )
       }
     </div>
   )

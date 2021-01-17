@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    marginBottom: '32px'
+  },
+  title: {
+    margin: '0',
   },
   productImg: {
     maxWidth: '180px',
@@ -42,6 +46,7 @@ interface ProductItemListProps {
   price: number;
   title: string;
   place: string;
+  shipping: boolean;
 }
 
 const ProductItemList: FC<ProductItemListProps> = (props): ReactElement => {
@@ -58,11 +63,11 @@ const ProductItemList: FC<ProductItemListProps> = (props): ReactElement => {
         <div className={css(styles.priceContainer)}>
           <h2>$ {props.price}</h2>
           {
-            props.price && 
+            props.shipping && 
             <img src={shippingImg.default} className={css(styles.shippingImg)}/>
           }
         </div>
-        <h3 >{props.title}</h3>
+        <h3 className={css(styles.title)}>{props.title}</h3>
       </div>
       <span className={css(styles.placeText)}>{props.place}</span>
     </div>
