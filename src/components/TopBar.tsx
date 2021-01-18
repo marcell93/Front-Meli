@@ -46,7 +46,15 @@ const TopBar: FC = (): ReactElement => {
     <div className={css(styles.topBar)}>
       <div className={css(styles.container)}>
         <img src={mlLogo.default} height='30px' />
-        <input type='text' className={css(styles.searchInput)} maxLength={50} placeholder='Nunca dejes de buscar' value={search} onChange={(e) => setSearch(e.target.value)} />
+        <input type='text' className={css(styles.searchInput)} maxLength={50}
+          placeholder='Nunca dejes de buscar' value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyPress={e => {
+            if (e.key === 'Enter') {
+              onClickSearch();
+            }
+          }}
+        />
         <button onClick={onClickSearch} className={css(styles.searchBtn)}>
           <img src={searchImg.default} />
         </button>

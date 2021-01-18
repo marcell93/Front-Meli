@@ -8,7 +8,14 @@ import { StyleSheet, css } from 'aphrodite';
 const styles = StyleSheet.create({
   productList: {
     width: '70%',
-    margin: '0 auto'
+    margin: '0 auto',
+    '@media (max-width: 600px)': {
+      width: '100%',
+    }
+  },
+  categories: {
+    margin: '16px 0',
+    color: '#999999'
   },
 });
 
@@ -50,7 +57,7 @@ const ProductList: FC = (): ReactElement => {
 
   return (
     <div className={css(styles.productList)}>
-      <p>Electronica, Audio y video > Ipod > Reproducciones</p>
+      <p className={css(styles.categories)}>{products?.categories?.join(' > ')}</p>
       {
         products?.items.map(p =>
           <ProductItemList

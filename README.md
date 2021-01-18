@@ -1,4 +1,4 @@
-# React Webpack Typescript Starter
+# Front-Meli
 > Minimal starter with hot module replacement (HMR) for rapid development.
 
 * **[React](https://facebook.github.io/react/)** (17.x)
@@ -9,7 +9,6 @@
 * Image loading/minification ([Image Webpack Loader](https://github.com/tcoopman/image-webpack-loader))
 * [SASS](http://sass-lang.com/) support
 * Code linting ([ESLint](https://github.com/eslint/eslint)) and formatting ([Prettier](https://github.com/prettier/prettier))
-* Test framework ([Jest](https://facebook.github.io/jest/))
 
 ## Installation
 1. Clone/download repo
@@ -25,7 +24,7 @@
 
 **Production**
 
-`yarn run start-prod`
+`yarn run start-prod` or `npm run start-prod` (To make the demo use this)
 
 * Build app once (HMR disabled) to `/dist/`
 * App served @ `http://localhost:3000`
@@ -39,15 +38,9 @@ Command | Description
 `yarn run start-dev` | Build app continuously (HMR enabled) and serve @ `http://localhost:8080`
 `yarn run start-prod` | Build app once (HMR disabled) to `/dist/` and serve @ `http://localhost:3000`
 `yarn run build` | Build app to `/dist/`
-`yarn run test` | Run tests
 `yarn run lint` | Run linter
 `yarn run lint --fix` | Run linter and fix issues
 `yarn run start` | (alias of `yarn run start-dev`)
 
 **Note**: replace `yarn` with `npm` in `package.json` if you use npm.
 
-## See also
-* [React Webpack Babel Starter](https://github.com/vikpe/react-webpack-babel-starter)
-* [Snowpack](https://github.com/snowpackjs/snowpack)
-* [Create React App](https://github.com/facebook/create-react-app)
-* [Isomorphic Webapp Starter](https://github.com/vikpe/isomorphic-webapp-starter)

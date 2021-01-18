@@ -9,8 +9,10 @@ const styles = StyleSheet.create({
     background: '#ffffff',
     padding: '16px',
     display: 'flex',
-    justifyContent: 'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    '@media (max-width: 750px)': {
+      flexDirection: 'column'
+    }
   },
   centerSection: {
     width: '60%',
@@ -19,16 +21,23 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginBottom: '32px'
+    marginBottom: '32px',
+    '@media (max-width: 750px)': {
+      marginBottom: '0',
+    }
   },
   title: {
     margin: '0',
   },
   productImg: {
-    maxWidth: '180px',
-    maxHeight: '180px',
+    width: '180px',
+    height: '180px',
     borderRadius: '4px',
     marginRight: '16px',
+    '@media (max-width: 750px)': {
+      width: '100%',
+      height: '100%',
+    }
   },
   shippingImg: {
     marginLeft: '10px',
@@ -58,13 +67,13 @@ const ProductItemList: FC<ProductItemListProps> = (props): ReactElement => {
 
   return (
     <div className={css(styles.productItemList)} >
-      <img onClick={goToProductDetail} src={props.image} className={css(styles.productImg)}/>
+      <img onClick={goToProductDetail} src={props.image} className={css(styles.productImg)} />
       <div className={css(styles.centerSection)}>
         <div className={css(styles.priceContainer)}>
           <h2>$ {props.price}</h2>
           {
-            props.shipping && 
-            <img src={shippingImg.default} className={css(styles.shippingImg)}/>
+            props.shipping &&
+            <img src={shippingImg.default} className={css(styles.shippingImg)} />
           }
         </div>
         <h3 className={css(styles.title)}>{props.title}</h3>
